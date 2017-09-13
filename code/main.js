@@ -20,6 +20,8 @@ import InputLabel from './Components/InputLabel.vue'
 import TextBox from './Components/TextBox.vue'
 import HelpText from './Components/HelpText.vue'
 import PaginationFooter from './Components/PaginationFooter.vue'
+import Jumbotron from './Components/Jumbotron.vue'
+import PageFooter from './Components/PageFooter.vue'
 
 
 Vue.config.productionTip = false
@@ -45,6 +47,8 @@ Vue.component('input-label',InputLabel)
 Vue.component('text-box',TextBox)
 Vue.component('help-text',HelpText)
 Vue.component('pagination-footer',PaginationFooter)
+Vue.component('jumbotron',Jumbotron)
+Vue.component('page-footer',PageFooter)
  
 /* eslint-disable no-new */
 new Vue({

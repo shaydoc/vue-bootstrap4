@@ -22,11 +22,6 @@ export default {
 }
 </script>
 
-<style scoped>
- .page-item.active .page-link {
-    z-index: 2;
-    color: #fff;
-    background-color: #0a7ad0;
-    border-color: #0867b0;
-}
+<style>
+
 </style>

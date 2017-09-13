@@ -1,7 +1,14 @@
 <template>
 <div>
   <app-header></app-header>
-  <grid type="fixed" style="margin-top:80px">
+  <jumbotron>
+    <grid type="fixed">
+         <h1 class="display-3">Vue-Bootstrap 4</h1>
+        <p>Making some vue components with bootstrap 4...</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+    </grid>
+  </jumbotron>
+  <grid type="fixed">
     <row>
       <column size="12">
          <card color="default">
@@ -60,6 +67,7 @@
            <pagination-footer></pagination-footer>
       </column>
     </row>
+    <page-footer></page-footer>
   </grid>
 </div>
 </template>
@@ -82,5 +90,11 @@ export default {
   }
 }
 </script>
+<style>
+   body{
+     padding-top: 3.5rem;
+   }
+</style>
+
 
  

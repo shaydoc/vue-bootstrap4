@@ -24,11 +24,7 @@ export default {
 </script>
 
 <style scoped>
-   .btn-primary{
-    background-color: #0a7ad0;
-    border-color: #0867b0;
-   }
-
+   
    @keyframes spinner {
   to {transform: rotate(360deg);}
 }
