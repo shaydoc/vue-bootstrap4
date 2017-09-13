@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import router from './Routing/router.js'
 import App from './AppShell/App'
 import AppHeader from './Components/AppHeader.vue'
 import Grid from './Components/Grid.vue'
@@ -22,6 +23,7 @@ import HelpText from './Components/HelpText.vue'
 import PaginationFooter from './Components/PaginationFooter.vue'
 import Jumbotron from './Components/Jumbotron.vue'
 import PageFooter from './Components/PageFooter.vue'
+import SideNav from './Components/SideNav.vue'
 
 
 Vue.config.productionTip = false
@@ -49,9 +51,10 @@ Vue.component('help-text',HelpText)
 Vue.component('pagination-footer',PaginationFooter)
 Vue.component('jumbotron',Jumbotron)
 Vue.component('page-footer',PageFooter)
- 
+Vue.component('side-nav', SideNav)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })

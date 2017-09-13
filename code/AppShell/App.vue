@@ -1,15 +1,21 @@
 <template>
-      <examples id="app"></examples>
+     <div>
+         <app-header></app-header>
+         <router-view></router-view>
+         <grid type="fluid">
+           <page-footer></page-footer>
+        </grid>
+     </div>
 </template>
 
 <script>
-import Examples from '../Pages/Examples.vue'
+//import Examples from '../Pages/Examples.vue'
 
 export default {
-  name: 'app',
-  components: {
-    Examples
-  }
+  name: 'app' //,
+  //components: {
+  //  Examples
+  //}
 }
 </script>
 
@@ -20,6 +26,7 @@ export default {
 
 body{
     font-family: Lato,"Open Sans",sans-serif;
+     padding-top: 3.5rem;
 }
-
+ 
 </style>

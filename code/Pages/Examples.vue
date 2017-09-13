@@ -1,6 +1,7 @@
 <template>
 <div>
-  <app-header></app-header>
+  <app-header>
+  </app-header>
   <jumbotron>
     <grid type="fixed">
          <h1 class="display-3">Vue-Bootstrap 4</h1>
@@ -90,11 +91,7 @@ export default {
   }
 }
 </script>
-<style>
-   body{
-     padding-top: 3.5rem;
-   }
-</style>
+
 
 
  

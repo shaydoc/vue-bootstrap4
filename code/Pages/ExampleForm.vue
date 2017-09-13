@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="mt-4">
+        <h1 class="mb-4">Forms</h1>
         <validation-summary :errors="errors"></validation-summary>
         <data-form>
-            <form-group :hasErrorMessage="false">
+            <form-group :hasErrorMessage="true">
                 <validation-wrapper :isRequired="true">
                         <input-label slot="label">Forename</input-label>
+                        <div slot="error">Forename is required....</div>
                         <help-text slot="help">Enter your first name, e.g. Sean</help-text>
                         <text-box slot="input"></text-box>
                 </validation-wrapper>
