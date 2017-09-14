@@ -7,17 +7,11 @@
 
 <script>
 export default {
-   name:'add-button',
-    data(){
-      return {
-          spin:false
-      }
-    },
+    name:'add-button',
+    props:['spin'],
     methods:{
         submit(){
-            this.spin = true
-            this.$emit('add')
-            setTimeout(()=>this.spin = false, 1000)
+            this.$emit('submit')
         }
     }
 }
