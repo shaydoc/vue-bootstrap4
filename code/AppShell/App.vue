@@ -1,7 +1,9 @@
 <template>
      <div>
          <app-header></app-header>
-         <router-view></router-view>
+          <transition name="fade" mode="out-in">
+             <router-view></router-view>
+         </transition>
          <grid type="fluid">
            <page-footer></page-footer>
         </grid>
@@ -27,6 +29,13 @@ export default {
 body{
     font-family: Lato,"Open Sans",sans-serif;
      padding-top: 3.5rem;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
 }
  
 </style>

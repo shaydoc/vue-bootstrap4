@@ -3,8 +3,8 @@
   
   <jumbotron>
     <grid type="fixed">
-         <h1 class="display-3">Vue-Bootstrap4</h1>
-        <p>Making some basic vue component wrappers with Bootstrap...</p>
+         <h1 class="display-3">Vue-Bootstrap</h1>
+        <p>Making some vue components with radiate...</p>
         <p><a class="btn btn-primary btn-lg" href="/#/index/form" role="button">Learn more »</a></p>
     </grid>
   </jumbotron>

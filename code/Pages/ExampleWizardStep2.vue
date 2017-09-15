@@ -1,26 +1,6 @@
 <template>
   <main-wrapper>
-      <page-title>Form</page-title>
-      <p>
-        How to use forms with validation
-      </p>
-      <card v-if="submitted">
-         <card-title>
-           Form Received
-         </card-title>
-         <card-block>
-             <p>
-                 Thanks for the information, we will be in touch
-             </p>
-         </card-block>
-         <card-block>
-           <cancel-button @cancel="reset">Start Again!</cancel-button>
-         </card-block>
-      </card>
-      <card v-else>
-          <card-title>
-              Form Submission
-          </card-title>
+      <card>
           <card-block>
                 <validation-summary :errors="this.validation.errors"></validation-summary>
         <data-form>
@@ -38,21 +18,17 @@
                         <text-box id="surname" slot="input" v-model.lazy="surname"></text-box>
                 </validation-wrapper>
             </form-group>
-               
               <form-group>
                  <input-label for="choice">Check List</input-label>
                 <radio-button-list id="choice" :options="radioOptions" name="yesno" v-model="selectedOption"></radio-button-list>
-                 <div class="alert alert-success">Selected: {{ selectedOption }}</div>
             </form-group>
             <form-group>
                 <input-label for="mulitchoice">Dropdown List</input-label>
                 <check-box-list id="mulitchoice" :options="radioOptions" name="yesnomaybe" v-model="selectedOptions"></check-box-list>
-                <div class="alert alert-success">Selected: {{ selectedOptions }}</div>
             </form-group>
             <form-group>
                 <input-label for="select">Select</input-label>
                 <drop-down-list id="select" :options="radioOptions" v-model="ddlOption"></drop-down-list>
-                <div class="mt-2 alert alert-success">Selected: {{ ddlOption }}</div>
             </form-group>
              <form-group :hasErrorMessage="validation.hasError('age')">
                 <validation-wrapper :isRequired="true">
@@ -78,26 +54,9 @@
                 </validation-wrapper>
             </form-group>
            
-             <form-group :hasErrorMessage="validation.hasError('message')">
-                <validation-wrapper :isRequired="true">
-                        <input-label for="message" slot="label">Message</input-label>
-                        <div slot="error">{{ validation.firstError('message') }}</div>
-                        <help-text slot="help">help text for message</help-text>
-                        <text-area id="message" slot="input" v-model.lazy="message"></text-area>
-                </validation-wrapper>
-            </form-group>
-            <form-group>
-                <validation-wrapper :isRequired="false">
-                     <input-label for="browser" slot="label">Browser</input-label>
-                     <input-list  id="browser" slot="input" v-model.lazy="browser" inputId="browserId" :list="this.browserList" listType="browsers"  ></input-list>
-                </validation-wrapper>
-            </form-group>
+          
          
-           
-            <form-group :hasErrorMessage="false">
-                <submit-button :spin="spin" @submit="submit"></submit-button>
-                <cancel-button @cancel="reset">Reset</cancel-button>
-            </form-group>
+          
         </data-form>
 
           </card-block>
@@ -114,17 +73,17 @@ let Validator = SimpleVueValidation.Validator
 Vue.use(SimpleVueValidation, {mode: 'conservative'})
 
 export default {
-  name:'example-form',
+  name:'example-wizard-step2',
+  props:['value'],
   data(){
          return {
+             forename:this.value.forename,
+             surname: this.value.surname,
+             age:this.value.age,
+             date:this.value.date,
+             subject:this.value.subject,
              spin:false,
              submitted:false,
-             forename:'',
-             surname:'',
-             age:'',
-             subject:'',
-             message:'',
-             date:'',
              browser:'',
              browserList:['Chrome','Edge','Firefox','Internet Explorer','Opera','Safari'],
              radioOptions:[{text:'Yes', value:'Yes'},{text:'No',value:'No'},{text:'Maybe',value:'Maybe'}],
@@ -159,45 +118,56 @@ export default {
                 .required('Subject is required')
                 .regex(/[a-zA-Z0-9&-'_@.?!,#\-\s\wáéíóúàèìòùäëïöüÁÉÍÓÚÀÈÌÒÙÄËÏÖÜ\(\)]+$/,'Subject has' + ' invalid characters');
             },
-        message: function (value) {
-                return Validator.value(value)
-                .required('Message is required')
-                .regex(/[a-zA-Z0-9&-'_@.?!,#\-\s\wáéíóúàèìòùäëïöüÁÉÍÓÚÀÈÌÒÙÄËÏÖÜ\(\)]+$/,'Message has' + ' invalid characters');
-            },
-        browser: function (value) {
-                return Validator.value(value)
-                .regex(/[a-zA-Z0-9&-'_@.?!,#\-\s\wáéíóúàèìòùäëïöüÁÉÍÓÚÀÈÌÒÙÄËÏÖÜ\(\)]+$/,'Browser name has' + ' invalid characters');
-            }
-         
+       
      },
      methods:{
-         reset(){
-           this.submitted = false
-           this.forename = ''
-           this.surname =''
-           this.subject =''
-           this.message =''
-           this.date =''
-           this.validation.reset()
+     },
+     watch:{
+         forename(newValue){
+            this.$emit('input',{
+                                forename:this.forename,
+                                surname: this.surname,
+                                age:this.age,
+                                date:this.date,
+                                subject:this.subject,
+                                })
          },
-         submit(){
-           var self = this;
-
-           this.$validate().then((success)=>
-           {
-              console.log(`The content validation returned: ${success}`)
-              if (success){
-                self.spin = true
-                setTimeout(()=>
-                {
-                    self.spin = false
-                    self.submitted = true
-                },
-                500)
-              }
-           }) 
-           
-        }
+         surname(newValue){
+            this.$emit('input',{
+                                forename:this.forename,
+                                surname: this.surname,
+                                age:this.age,
+                                date:this.date,
+                                subject:this.subject,
+                                })
+         },
+         age(newValue){
+            this.$emit('input',{
+                                forename:this.forename,
+                                surname: this.surname,
+                                age:this.age,
+                                date:this.date,
+                                subject:this.subject,
+                                })
+         },
+         date(newValue){
+              this.$emit('input',{
+                                forename:this.forename,
+                                surname: this.surname,
+                                age:this.age,
+                                date:this.date,
+                                subject:this.subject,
+                                })
+         },
+         subject(newValue){
+            this.$emit('input',{
+                                forename:this.forename,
+                                surname: this.surname,
+                                age:this.age,
+                                date:this.date,
+                                subject:this.subject,
+                                })
+         }
      }
 }
 </script>

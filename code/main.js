@@ -11,7 +11,13 @@ import DesktopColumn from './Components/DesktopColumn.vue'
 import Jumbotron from './Components/Jumbotron.vue'
 import PageFooter from './Components/PageFooter.vue'
 import SideNav from './Components/SideNav.vue'
+import MainWrapper from './Components/MainWrapper.vue'
 //End Grid
+
+//Headers
+import PageTitle from './Components/PageTitle.vue'
+import SectionTitle from  './Components/SectionTitle.vue'
+//Headers
 
 //Card
 import CardList from './Components/CardList.vue'
@@ -45,7 +51,12 @@ import DateBox from './Components/DateBox.vue'
 import HelpText from './Components/HelpText.vue'
 //End Forms
 
+//Wizard
+import Wizard from './Components/Wizard.vue'
+//Wizard
+
 //Pagination
+import ClientSidePagedTable from './Components/ClientSidePagedTable.vue'
 import PaginationFooter from './Components/PaginationFooter.vue'
 //End Pagination
 
@@ -62,6 +73,10 @@ Vue.component('desktop-column',DesktopColumn)
 Vue.component('jumbotron',Jumbotron)
 Vue.component('page-footer',PageFooter)
 Vue.component('side-nav', SideNav)
+Vue.component('main-wrapper', MainWrapper)
+
+Vue.component('page-title', PageTitle)
+Vue.component('section-title', SectionTitle)
 
 Vue.component('card-list',CardList)
 Vue.component('card',Card) 
@@ -89,10 +104,45 @@ Vue.component('check-box-list', CheckBoxList)
 Vue.component('drop-down-list', DropDownList)
 Vue.component('help-text',HelpText)
 
+Vue.component('wizard', Wizard)
+
+Vue.component('client-side-paged-table',ClientSidePagedTable)
 Vue.component('pagination-footer',PaginationFooter)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  data:{
+    dto:{
+      step1:{
+        forename:'Shay',
+        surname:'Doherty',
+        age:'33',
+        date:'2017-09-01',
+        subject:'test'
+      },
+       step2:{
+      forename:'Vanessa',
+        surname:'Doherty',
+        age:'33',
+        date:'2017-09-01',
+        subject:'test'
+      },
+      step3:{
+        forename:'Joanna',
+        surname:'Doherty',
+        age:'33',
+        date:'2017-09-01',
+        subject:'test'
+      },
+      step4:{
+        forename:'',
+        surname:'',
+        age:'',
+        date:'',
+        subject:''
+      }
+    }
+  },
   render: h => h(App)
 })
